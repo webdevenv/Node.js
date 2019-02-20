@@ -22,7 +22,10 @@ module.exports = {
     node: {
       // Development mode
       default: {
-        script: npsUtils.concurrent.nps('parcel.node', 'nodemon.node'),
+        script: npsUtils.concurrent.nps(
+          'parcel.node',
+          'nodemon.node',
+        ),
         description: 'Development mode for Node.js',
       },
       // Builds
@@ -32,7 +35,10 @@ module.exports = {
           description: 'Build Node.js project',
         },
         run: {
-          script: npsUtils.series.nps('parcel.node.build', 'nodemon.node'),
+          script: npsUtils.series.nps(
+            'parcel.node.build',
+            'nodemon.node',
+          ),
           description: 'Build Node.js project and run server',
         },
       },
@@ -50,7 +56,10 @@ module.exports = {
       },
       // Debug mode
       debug: {
-        script: npsUtils.concurrent.nps('parcel.node', 'nodemon.node.debug'),
+        script: npsUtils.concurrent.nps(
+          'parcel.node',
+          'nodemon.node.debug',
+        ),
         description: 'Debug Node.js project',
       },
     },
@@ -63,11 +72,13 @@ module.exports = {
       node: {
         // Default as development
         default: {
-          script: 'cross-env NODE_ENV=development nodemon dist/app.js',
+          script:
+            'cross-env NODE_ENV=development nodemon ./dist/app.js',
           hiddenFromHelp: true,
         },
         production: {
-          script: 'cross-env NODE_ENV=production nodemon prod/app.js',
+          script:
+            'cross-env NODE_ENV=production nodemon ./prod/app.js',
           hiddenFromHelp: true,
         },
         debug: {
